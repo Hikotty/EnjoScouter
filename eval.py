@@ -13,9 +13,6 @@ def calc(text):
     # モデルの読み込み
     model = gensim.models.KeyedVectors.load(model_path)
 
-    # 類似度上位10件を取得
-    # match = wv.most_similar(positive=['姪', '男性'], negative=['女性'],topn=20)
-
     # match = model.most_similar("炎上", topn=20)
 
     # 見やすい形式で表示
@@ -48,7 +45,8 @@ def calc(text):
         else:
             eval /= 2
 
-    print(eval)
+    return eval
+
 
 if __name__ == "__main__":
     text = ts.main()
