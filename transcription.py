@@ -1,6 +1,10 @@
 import azure.cognitiveservices.speech as speechsdk
 import time
 
+def main():
+    text = transcription('06f273ea48294fc6baf028f19f35d85b')
+    return text
+
 def transcription(speech_key):
     service_region, language = "japanwest", "ja-JP"
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region,speech_recognition_language=language)

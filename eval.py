@@ -2,12 +2,13 @@ import gensim
 from pprint import pprint
 from janome.tokenizer import Tokenizer
 import re
+import transcription as ts
 
 
 def calc(text):
     # chiVeデータのPATH（kv:KeyedVectors）
     # modelの読み込みに時間がかかる，事前に読んでデモするといいかも
-    model_path = "model/chive-1.2-mc90_gensim/chive-1.2-mc90.kv"
+    model_path = "model/chive-1.2-mc90.kv"
 
     # モデルの読み込み
     model = gensim.models.KeyedVectors.load(model_path)
@@ -15,10 +16,10 @@ def calc(text):
     # 類似度上位10件を取得
     # match = wv.most_similar(positive=['姪', '男性'], negative=['女性'],topn=20)
 
-    match = model.most_similar("炎上", topn=20)
+    # match = model.most_similar("炎上", topn=20)
 
     # 見やすい形式で表示
-    pprint(match)
+    # pprint(match)
 
     # 正規表現
     pat = r'名詞'
@@ -49,7 +50,7 @@ def calc(text):
 
     print(eval)
 
-
 if __name__ == "__main__":
-    text = "今日はいい天気ですね"
+    text = ts.main()
+    # text = "今日はいい天気ですね"
     calc(text)
