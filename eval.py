@@ -4,6 +4,9 @@ from janome.tokenizer import Tokenizer
 import re
 import transcription as ts
 
+eval = 0
+
+
 def main():
     # modelの読み込みに時間がかかる，事前に読んでデモするといいかも
     model_path = "model/chive-1.2-mc90.kv"
@@ -19,6 +22,7 @@ def main():
 
 def calc(text,model):
     # 正規表現
+    global eval
     pat = r'名詞'
     regex = re.compile(pat)
 
@@ -30,7 +34,6 @@ def calc(text,model):
     # 炎上しそうなワード
     fire_words = ['炎上', '人権', '動画', '拡散', '不正', '歌い手', '喧嘩']
 
-    eval = 0
 
     for n in malist:
         if(regex.match(n.part_of_speech)):
@@ -42,12 +45,18 @@ def calc(text,model):
     for tmp_word in word_list:
         max_fire = 0
         for eval_word in fire_words:
-            max_fire = model.similarity(eval_word, tmp_word)
+            try:
+                max_fire = model.similarity(eval_word, tmp_word)
+            except:
+                max_fire = 0.1
         if (max_fire >= 0.2):
             eval += max_fire*100
         else:
-            eval /= 2
-    f = open('aiai.txt', 'w')
+            eval -= 5
+    if(eval <0):
+        eval = 0
+    print(eval)
+    f = open('text/aiai.txt', 'w')
     f.write(str(eval))
     f.close()
 
