@@ -47,7 +47,10 @@ def calc(text,model):
             eval += max_fire*100
         else:
             eval /= 2
-    print(eval)
+    f = open('aiai.txt', 'w')
+    f.write(str(eval))
+    f.close()
+
 
 if __name__ == "__main__":
     main()
