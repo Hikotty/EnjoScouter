@@ -8,24 +8,28 @@ path5 = r'movie/skr2203c_b.mp4'
 C = [path5,path,path2,path3,path4]
 sentence = ['Peace','Fire...?','Fire!!','Fire!Fire!Fire!','Good luck...']
 
-for i in range(5):
-    PATH = C[i]
+def main():
+    viewer()
+
+def viewer():
+    # for i in range(5):
+
+    PATH = C[0]
     cap = cv2.VideoCapture(PATH)
-    while(cap.isOpened()):
+    while(True):
         ret, frame = cap.read()
         if ret == True:
             frame = cv2.resize(frame , (1920,1080))
-            cv2.putText(frame,sentence[i], (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 5, cv2.LINE_AA)
+            cv2.putText(frame,sentence[0], (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 5, cv2.LINE_AA)
             cv2.imshow("Video", frame)
             if cv2.waitKey(25) & 0xFF == ord('q'):
                 break
-
-        #    if not ret:
-        #     cap.set(cv2.CAP_PROP_POS_FRAMES, 100)
-        #     continue
-
         else:
             break
 
     cap.release()
-cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    main()

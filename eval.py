@@ -4,20 +4,20 @@ from janome.tokenizer import Tokenizer
 import re
 import transcription as ts
 
-
-def calc(text):
-    # chiVeデータのPATH（kv:KeyedVectors）
+def main():
     # modelの読み込みに時間がかかる，事前に読んでデモするといいかも
     model_path = "model/chive-1.2-mc90.kv"
 
     # モデルの読み込み
     model = gensim.models.KeyedVectors.load(model_path)
+    while(1):
+        text = ts.main()
+        if(text == -1):
+            continue
+        # text = "今日はいい天気ですね"
+        calc(text,model)
 
-    # match = model.most_similar("炎上", topn=20)
-
-    # 見やすい形式で表示
-    # pprint(match)
-
+def calc(text,model):
     # 正規表現
     pat = r'名詞'
     regex = re.compile(pat)
@@ -36,6 +36,9 @@ def calc(text):
         if(regex.match(n.part_of_speech)):
             word_list.append(n.surface)
 
+    # for tmp_word in word_list:
+    #     if(tmp_word)
+
     for tmp_word in word_list:
         max_fire = 0
         for eval_word in fire_words:
@@ -44,11 +47,7 @@ def calc(text):
             eval += max_fire*100
         else:
             eval /= 2
-
-    return eval
-
+    print(eval)
 
 if __name__ == "__main__":
-    text = ts.main()
-    # text = "今日はいい天気ですね"
-    calc(text)
+    main()
