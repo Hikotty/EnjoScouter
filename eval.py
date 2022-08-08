@@ -36,8 +36,7 @@ def calc(text, model):
     word_list = []
 
     # 炎上しそうなワード
-    fire_words = ['炎上', '人権', '動画', '拡散', '不正', '歌い手', '喧嘩','女','男']
-    # ,'女','男','家事','結婚','年齢','離婚','身長'
+    fire_words = ['炎上', '人権', '動画', '拡散', '不正', '歌い手', '喧嘩','女','男',]
 
     for n in malist:
         if(regex.match(n.part_of_speech)):
@@ -55,7 +54,7 @@ def calc(text, model):
             # eval += max_fire*100
             eval += 12.5
         else:
-            eval -= 1
+            eval -= 5
     if(eval < 0):
         eval = 0
     if(eval >=100):
@@ -66,7 +65,6 @@ def calc(text, model):
     f = open('text/aiai.txt', 'w')
     f.write(str(eval))
     f.close()
-
 
 if __name__ == "__main__":
     main()
