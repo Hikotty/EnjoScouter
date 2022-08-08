@@ -49,7 +49,8 @@ def calc(text, model):
             try:
                 max_fire = model.similarity(eval_word, tmp_word)
             except:
-                max_fire = 0.1
+                # max_fire = 0.1
+                # max_fire = max_fire
                 print(eval_word,tmp_word)
         if (max_fire >= 0.2):
             # eval += max_fire*100
