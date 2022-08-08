@@ -17,14 +17,7 @@ if __name__ == '__main__':
     path5 = r'video/nc84025.mp4'
     C = [path,path2,path3,path4,path5]
 
-    ana1 = cv2.imread(r'video/level1.png')
-    ana2 = cv2.imread(r'video/level2.png')
-    ana3 = cv2.imread(r'video/level3.png')
-    ana4 = cv2.imread(r'video/level4.png')
-    ana = [ana1,ana2,ana4,ana4]
-
     sen = ['Peace','Fire...?','Fire!!','Fire!Fire!Fire!','Good luck...']
-
     # 分類器の指定
     cascade_file = "xml/haarcascade_frontalface_alt2.xml"
     cascade = cv2.CascadeClassifier(cascade_file)
@@ -37,13 +30,11 @@ if __name__ == '__main__':
 
     # ウィンドウの準備
     cv2.namedWindow(ORG_WINDOW_NAME)
-    # GAUSSIAN_WINDOW_NAME = "gaussian"
-    # cv2.namedWindow(GAUSSIAN_WINDOW_NAME)
     P = C[0]
     sentense =sen[0]
     cap2 = cv2.VideoCapture(P)
-    # 変換処理ループ
 
+    # 変換処理ループ
     while end_flag == True:
         #textfile
         f = open('text/aiai.txt', 'r')
@@ -56,43 +47,58 @@ if __name__ == '__main__':
         elif int(power) >= 0 and int(power) <= 25 and P != C[0]:
             P = C[0]
             cap2.release()
+
+            img = cv2.imread('video/level1.png')
+            img =cv2.resize(img, (width, height))
+            cv2.imshow(ORG_WINDOW_NAME,img)
+            key = cv2.waitKey(INTERVAL)
+            time.sleep(3)
+
             cap2 = cv2.VideoCapture(C[0])
             sentense =sen[0]
 
         elif int(power) > 25 and int(power) <=50 and P != C[1]:
             P = C[1]
             cap2.release()
-            img = ana[0]
-            img = cv2.resize(img , (width,height))
-            cv2.imshow(ORG_WINDOW_NAME, img)
-            time.sleep(2)
+
+            img = cv2.imread('video/level2.png')
+            img =cv2.resize(img, (width, height))
+            cv2.imshow(ORG_WINDOW_NAME,img)
+            key = cv2.waitKey(INTERVAL)
+            time.sleep(3)
+
             cap2  = cv2.VideoCapture(C[1])
             sentense =sen[1]
 
         elif int(power) > 50 and int(power) <=75 and P !=C[2]:
             P = C[2]
             cap2.release()
-            img = ana[1]
-            img = cv2.resize(img , (width,height))
-            cv2.imshow(ORG_WINDOW_NAME, img)
+
+            img = cv2.imread('video/level3.png')
+            img =cv2.resize(img, (width, height))
+            cv2.imshow(ORG_WINDOW_NAME,img)
+            key = cv2.waitKey(INTERVAL)
+            time.sleep(3)
+
             cap2 = cv2.VideoCapture(C[2])
             sentense =sen[2]
 
         elif int(power) > 75 and int(power) <=90 and P!=C[3]:
             P = C[3]
             cap2.release()
-            img = ana[2]
-            img = cv2.resize(img , (width,height))
-            cv2.imshow(ORG_WINDOW_NAME, img)
+
+            img = cv2.imread('video/level4.png')
+            img =cv2.resize(img, (width, height))
+            cv2.imshow(ORG_WINDOW_NAME,img)
+            key = cv2.waitKey(INTERVAL)
+            time.sleep(3)
+
             cap2 = cv2.VideoCapture(C[3])
             sentense =sen[3]
 
         elif int(power) <= 100 and int(power) >90 and P!=C[4]:
             P = C[4]
             cap2.release()
-            img = ana[3]
-            img = cv2.resize(img , (width,height))
-            cv2.imshow(ORG_WINDOW_NAME, img)
             cap2 = cv2.VideoCapture(C[4])
             sentense =sen[4]
 

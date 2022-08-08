@@ -57,6 +57,7 @@ def calc(text, model):
             eval -= 5
     if(eval < 0):
         eval = 0
+
     if(eval >=100):
         eval = 100
 
