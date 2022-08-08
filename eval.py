@@ -9,7 +9,7 @@ eval = 0
 
 def main():
     # modelの読み込みに時間がかかる，事前に読んでデモするといいかも
-    model_path = "model/chive-1.2-mc5.kv"
+    model_path = "model/chive-1.2-mc90.kv"
 
     # モデルの読み込み
     print("読み込み中")
@@ -36,7 +36,7 @@ def calc(text, model):
     word_list = []
 
     # 炎上しそうなワード
-    fire_words = ['炎上', '人権', '動画', '拡散', '不正', '歌い手', '喧嘩','女','男']
+    fire_words = ['炎上', '人権', '動画', '拡散', '不正', '歌い手', '喧嘩', '女', '男']
     # ,'女','男','家事','結婚','年齢','離婚','身長'
 
     for n in malist:
@@ -51,15 +51,15 @@ def calc(text, model):
             except:
                 # max_fire = 0.1
                 # max_fire = max_fire
-                print(eval_word,tmp_word)
+                print(eval_word, tmp_word)
         if (max_fire >= 0.2):
             # eval += max_fire*100
             eval += 12.5
         else:
-            eval -= 10
+            eval -= 1
     if(eval < 0):
         eval = 0
-    if(eval >=100):
+    if(eval >= 100):
         eval = 100
     print(eval)
     f = open('text/aiai.txt', 'w')
