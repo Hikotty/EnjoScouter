@@ -2,7 +2,11 @@ import azure.cognitiveservices.speech as speechsdk
 import time
 
 def main():
-    text = transcription('06f273ea48294fc6baf028f19f35d85b')
+    f = open('api.txt')
+    data =f.read()
+    f.close()
+    text = transcription(data)
+
     return text
 
 def transcription(speech_key):

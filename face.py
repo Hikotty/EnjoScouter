@@ -1,17 +1,6 @@
 import cv2
 
-def showana(ana1,height,width,ORG_WINDOW_NAME):
-    cap = cv2.VideoCapture(ana1)
-    while(True):
-        ret, frame = cap.read()
-        if ret == True:
-            frame = cv2.resize(frame , (width,height))
-            cv2.imshow(ORG_WINDOW_NAME, frame)
-        else:
-            cap.release()
-            break
 
-    cap.release()
 if __name__ == '__main__':
     # 定数定義
     ESC_KEY = 27     # Escキー
@@ -19,7 +8,6 @@ if __name__ == '__main__':
     FRAME_RATE = 30  # fps
 
     ORG_WINDOW_NAME = "Enjoy"
-
     DEVICE_ID = 0
 
     path = r'video/skr2203c_b.mp4'
@@ -86,14 +74,12 @@ if __name__ == '__main__':
         elif int(power) > 75 and int(power) <=90 and P!=C[3]:
             P = C[3]
             cap2.release()
-            showana(ana[3],height,width,ORG_WINDOW_NAME)
             cap2 = cv2.VideoCapture(C[3])
             sentense =sen[3]
 
         elif int(power) <= 100 and int(power) >90 and P!=C[4]:
             P = C[4]
             cap2.release()
-            showana(ana[3],height,width,ORG_WINDOW_NAME)
             cap2 = cv2.VideoCapture(C[4])
             sentense =sen[4]
 
