@@ -2,7 +2,7 @@ import gensim
 from pprint import pprint
 from janome.tokenizer import Tokenizer
 import re
-import transcription as ts
+import trans as ts
 
 eval = 0
 

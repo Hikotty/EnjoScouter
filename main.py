@@ -8,7 +8,7 @@ import re
 from janome.tokenizer import Tokenizer
 import gensim
 from pprint import pprint
-import transcription as ts
+import trans as ts
 
 
 path = r'movie/steamA.mp4'
