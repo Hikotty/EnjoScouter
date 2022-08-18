@@ -12,9 +12,9 @@ def main():
     model_path = "model/chive-1.2-mc90.kv"
 
     # モデルの読み込み
-    print("読み込み中")
+    print("モデル読み込み中")
     model = gensim.models.KeyedVectors.load(model_path)
-    print("あああああああああああああああああああ")
+    print("モデル読み込み完了")
 
     while(1):
         text = ts.main()
