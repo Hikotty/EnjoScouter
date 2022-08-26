@@ -41,12 +41,7 @@ cap2 = cv2.VideoCapture(P)
 
 # 変換処理ループ
 while end_flag == True:
-    #textfile
-    #f = open('text/aiai.txt', 'r')
-    #pow = f.read()
-    #print(pow)
-    #f.close()
-    #query
+
     enjyo = session.query(Enjyo).order_by(Enjyo.id.desc()).first()
     pow = str(enjyo.power)
 
@@ -116,7 +111,7 @@ while end_flag == True:
     height, width = img.shape[:2]
 
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    face_list = cascade.detectMultiScale(img_gray, minSize=(100, 100))
+    face_list = cascade.detectMultiScale(img_gray, minSize=(50, 50))
     #print(face_list)
 
     #背景動画の読み込み
