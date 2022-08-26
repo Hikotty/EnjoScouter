@@ -14,4 +14,3 @@ class Enjyo(Base):
 
 Base.metadata.create_all(bind=engine)
 session = sessionmaker(bind=engine)()
-

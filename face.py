@@ -5,6 +5,7 @@ import create_table
 #database
 session = create_table.session
 Enjyo = create_table.Enjyo
+
 # 定数定義
 ESC_KEY = 27     # Escキー
 INTERVAL= 33     # 待ち時間
