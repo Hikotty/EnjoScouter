@@ -1,5 +1,8 @@
-import cv2
+import create_table
 
-img = cv2.imread('video/level1.png')
-cv2.imshow('img',img)
-cv2.waitKey()
+session = create_table.session
+Enjyo = create_table.Enjyo
+
+enjo =Enjyo(word = 'enjo',power = 10)
+session.add(enjo)
+session.commit()
