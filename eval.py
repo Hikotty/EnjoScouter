@@ -13,13 +13,16 @@ Enjyo = create_table.Enjyo
 #initial values
 eval = 0
 
-# 炎上しそうなワード
-#fire_words = ['炎上','人権','動画','拡散','不正','歌い手','喧嘩','女','男']
-
 #main func
 def main():
+    #zero value
+    enjo =Enjyo(word = 'test',power = 0)
+    session.add(enjo)
+    session.commit()
+
     # modelの読み込みに時間がかかる，事前に読んでデモするといいかも
     model_path = "model/chive-1.2-mc90.kv"
+
     # モデルの読み込み
     print("読み込み中")
     model = gensim.models.KeyedVectors.load(model_path)
@@ -45,7 +48,6 @@ def calc(text, model):
 
     # 炎上しそうなワード
     fire_words = ['炎上','人権','動画','拡散','不正','歌い手','喧嘩','女','男']
-    speaker = []
 
     for n in malist:
         if(regex.match(n.part_of_speech)):
@@ -59,7 +61,7 @@ def calc(text, model):
             except:
                 max_fire = max(0.1,max_fire)
 
-        if (max_fire >= 0.2):
+        if (max_fire >= 0.3):
             eval += 10
         else:
             eval -= 5
@@ -71,14 +73,12 @@ def calc(text, model):
         eval = 100
 
     eval = int(eval)
-    print(eval)
-    #write in file
-    #f = open('text/aiai.txt', 'w')
-    #f.write(str(eval))
-    #f.close()
-
     #Insert to database
-    enjo =Enjyo(word = 'test',power = eval)
+    try:
+        enjo =Enjyo(word = str(tmp_word),power = eval)
+    except:
+        enjo =Enjyo(word = '',power = eval)
+
     session.add(enjo)
     session.commit()
 
