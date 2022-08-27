@@ -6,17 +6,19 @@ import time
 import trans as ts
 import create_table
 
-#database
+# database
 session = create_table.session
 Enjyo = create_table.Enjyo
 
-#initial values
+# initial values
 eval = 0
 
-#main func
+# main func
+
+
 def main():
-    #zero value
-    enjo =Enjyo(word = 'test',power = 0)
+    # zero value
+    enjo = Enjyo(word='test', power=0)
     session.add(enjo)
     session.commit()
 
@@ -34,7 +36,9 @@ def main():
             continue
         calc(text, model)
 
-#calculate Enjyo!!
+# calculate Enjyo!!
+
+
 def calc(text, model):
     # 正規表現
     global eval
@@ -47,7 +51,7 @@ def calc(text, model):
     word_list = []
 
     # 炎上しそうなワード
-    fire_words = ['炎上','人権','動画','拡散','不正','歌い手','喧嘩','女','男']
+    fire_words = ['炎上', '人権', '動画', '拡散', '不正', '歌い手', '喧嘩', '女', '男', '馬鹿','迷惑','ばか','バカ','はげ','']
 
     for n in malist:
         if(regex.match(n.part_of_speech)):
@@ -57,30 +61,31 @@ def calc(text, model):
         max_fire = 0
         for eval_word in fire_words:
             try:
-                max_fire = max(model.similarity(eval_word, tmp_word),max_fire)
+                max_fire = max(model.similarity(eval_word, tmp_word), max_fire)
             except:
-                max_fire = max(0.1,max_fire)
+                max_fire = max(0.1, max_fire)
 
-        if (max_fire >= 0.3):
-            eval += 10
+        if (max_fire >= 0.5):
+            eval += 7
         else:
-            eval -= 5
+            eval -= 0
 
     if(eval < 0):
         eval = 0
 
-    if(eval >=100):
+    if(eval >= 100):
         eval = 100
 
     eval = int(eval)
-    #Insert to database
+    # Insert to database
     try:
-        enjo =Enjyo(word = str(tmp_word),power = eval)
+        enjo = Enjyo(word=str(word_list), power=eval)
     except:
-        enjo =Enjyo(word = '',power = eval)
+        enjo = Enjyo(word='', power=eval)
 
     session.add(enjo)
     session.commit()
+
 
 if __name__ == "__main__":
     main()
