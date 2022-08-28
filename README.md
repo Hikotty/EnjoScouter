@@ -37,9 +37,13 @@
 
 ## メンバー
 伊勢田氷琴*
+
 後藤逸兵*
+
 三嶋佑輝*
+
 *奈良先端科学技術大学院大学先端科学技術研究科情報科学領域ユビキタス・コンピューティングシステム研究室Μ１
+
 http://ubi-lab.naist.jp/ja/
 
 # Enjo Scouter
@@ -75,7 +79,7 @@ The vectorized data is then input into a pre-defined "Enjo estimation model" to 
 
 Depending on the degree of inflammability, the screen displayed on the smart glasses is dynamically generated using CV2 and presented to the user.
 
-## Special Thanks
+## Acknowledge
 This system was submitted on YTV Hackathon.
 
 ## Member 
