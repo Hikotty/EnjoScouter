@@ -33,7 +33,7 @@
 炎上度に応じてスマートグラスに表示する画面をCV２を用いて動的に生成し，ユーザに提示する．
 
 ## 謝辞
-本システムはYTVハッカソンへ提出した．
+本システムはYTVハッカソンへ提出し,「メガネ賞」を受賞しました．
 
 ## メンバー
 伊勢田氷琴*
@@ -66,7 +66,7 @@ The Enjo scouter was inspired by the device used by the antagonists "Raditz" and
 
 By watching TV through the Enjo Scouter, viewers can check whether or not a TV celebrity's comments are likely to cause a Enjo, using numbers and easy-to-understand animations. This enable viewers to watch TV with peace of mind.
 
-In the TV recording scene, the actors wear the Enjo scouter and look at their own faces through the monitor to check the degree of Enjo of their statements and.
+In the TV recording scene, the actors wear the Enjo scouter and look at their own faces through the monitor to check the degree of Enjo of their statements.
 
 ## System 
 The flame scouter consists of smart glasses and a PC.
@@ -80,10 +80,9 @@ The vectorized data is then input into a pre-defined "Enjo estimation model" to 
 Depending on the degree of inflammability, the screen displayed on the smart glasses is dynamically generated using CV2 and presented to the user.
 
 ## Acknowledge
-This system was submitted on YTV Hackathon.
+This system was submitted on YTV Hackathon, and won the "Glass Award".
 
 ## Member 
 Iseda Hikoto(M1 Student of Ubiquitous Computing Syatem Lab, at Nara Institute of Science and Technology, Nara, Ikoma)  
 Goto Ippei(M1 Student of Ubiquitous Computing System Lab, at Nara Institute of Science and Technology, Nara, Ikoma)  
 Mishima Yuki(M1 Student of Ubiquitous Computing System Lab, at Nara Institute of Science and Technology, Nara, Ikoma)  
-http://ubi-lab.naist.jp/ja/
